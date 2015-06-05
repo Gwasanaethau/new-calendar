@@ -41,5 +41,6 @@ end
 
 Coveralls::RakeTask.new
 
-task default: [:cop, :reek, :rspec, :cucumber, 'coveralls:push']
+task default: [:cop, :reek, :rspec, :cucumber]
 task v: [:cop, :preek, :rspec_v, :cucumber_v]
+task ci: [:rspec, :cucumber, 'coveralls:push']
