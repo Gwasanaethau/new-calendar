@@ -7,7 +7,7 @@ require 'coveralls/rake/task'
 Reek::Rake::Task.new :reek do |t|
   t.fail_on_error = false
   t.source_files = 'src/**/*.rb'
-  t.config_files = '.reek'
+  t.config_file = '.reek'
 end
 
 desc 'Check for code smells (verbose)'
