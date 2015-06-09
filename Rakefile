@@ -4,6 +4,11 @@ require 'rubocop/rake_task'
 require 'reek/rake/task'
 require 'coveralls/rake/task'
 
+desc 'Clean out test coverage'
+task :clean do
+  sh 'rm -r ./coverage'
+end
+
 Reek::Rake::Task.new :reek do |t|
   t.fail_on_error = false
   t.source_files = 'src/**/*.rb'
@@ -41,6 +46,6 @@ end
 
 Coveralls::RakeTask.new
 
-task default: [:cop, :reek, :rspec, :cucumber]
-task v: [:cop, :preek, :rspec_v, :cucumber_v]
+task default: [:clean, :cop, :reek, :rspec, :cucumber]
+task v: [:clean, :cop, :preek, :rspec_v, :cucumber_v]
 task ci: [:rspec, :cucumber, 'coveralls:push']
