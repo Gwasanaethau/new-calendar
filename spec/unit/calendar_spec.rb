@@ -58,8 +58,7 @@ describe Calendar do
     end
   end
 
-  context 'when initialised with a known date in the future'\
-    ' (01/01/1970 Gregorian) –' do
+  context 'when initialised with a known date in the future –' do
     subject { described_class.new 3_179_523_661 }
 
     it 'returns a 101 for the year' do
