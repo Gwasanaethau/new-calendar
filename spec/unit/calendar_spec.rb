@@ -83,4 +83,115 @@ describe Calendar do
       expect(subject.second).to equal 1
     end
   end
+
+  context 'when formatting output –' do
+    context 'when the value of seconds is small –' do
+      it 'prepends a leading zero to the second' do
+        (0...10).each do |index|
+          subject = described_class.new index
+          expect(subject.second_padded).to eql "0#{index}"
+        end
+      end
+    end
+
+    context 'when the value of seconds is large –' do
+      it 'does not prepend a leading zero to the second' do
+        (10...60).each do |index|
+          subject = described_class.new index
+          expect(subject.second_padded).not_to eql "0#{index}"
+          expect(subject.second_padded).to eql index.to_s
+        end
+      end
+    end
+
+    context 'when the value of minutes is small –' do
+      it 'prepends a leading zero to the minute' do
+        (0...10).each do |index|
+          subject = described_class.new index * 60
+          expect(subject.minute_padded).to eql "0#{index}"
+        end
+      end
+    end
+
+    context 'when the value of minutes is large –' do
+      it 'does not prepend a leading zero to the minute' do
+        (10...60).each do |index|
+          subject = described_class.new index * 60
+          expect(subject.minute_padded).not_to eql "0#{index}"
+          expect(subject.minute_padded).to eql index.to_s
+        end
+      end
+    end
+
+    context 'when the value of hours is small –' do
+      it 'prepends a leading zero to the hour' do
+        (0...10).each do |index|
+          subject = described_class.new index * 60 * 60
+          expect(subject.hour_padded).to eql "0#{index}"
+        end
+      end
+    end
+
+    context 'when the value of hours is large –' do
+      it 'does not prepend a leading zero to the hour' do
+        (10...24).each do |index|
+          subject = described_class.new index * 60 * 60
+          expect(subject.hour_padded).not_to eql "0#{index}"
+          expect(subject.hour_padded).to eql index.to_s
+        end
+      end
+    end
+
+    it 'prepends a leading zero to the day' do
+      (0...7).each do |index|
+        subject = described_class.new index * 60 * 60 * 24
+        expect(subject.day_padded).to eql "0#{index}"
+      end
+    end
+
+    it 'prepends a leading zero to the week' do
+      (0...4).each do |index|
+        subject = described_class.new index * 60 * 60 * 24 * 7
+        expect(subject.week_padded).to eql "0#{index}"
+      end
+    end
+
+    context 'when the value of months is small –' do
+      it 'prepends a leading zero to the month' do
+        (1...10).each do |index|
+          subject = described_class.new index * 60 * 60 * 24 * 7 * 4
+          expect(subject.month_padded).to eql "0#{index}"
+        end
+      end
+    end
+
+    context 'when the value of months is large –' do
+      it 'does not prepend a leading zero to the month' do
+        (10...13).each do |index|
+          subject = described_class.new index * 60 * 60 * 24 * 7 * 4
+          expect(subject.month_padded).not_to eql "0#{index}"
+          expect(subject.month_padded).to eql index.to_s
+        end
+      end
+    end
+
+    context 'when the value of years is small –' do
+      it 'prepends a leading zero to the year' do
+        (1...10).each do |index|
+          subject = described_class.new index * 60 * 60 * 24 * 7 * 4 * 13
+          expect(subject.year_padded).to eql "0#{index}"
+        end
+      end
+    end
+
+    context 'when the value of years is large –' do
+      it 'does not prepend a leading zero to the year' do
+        (10..100).each do |index|
+          subject = described_class.new index * 60 * 60 * 24 * 7 * 4 * 13
+          expect(subject.year_padded).not_to eql "0#{index}"
+          expect(subject.year_padded).to eql index.to_s
+        end
+      end
+    end
+  end
 end
