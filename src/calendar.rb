@@ -11,8 +11,7 @@ class Calendar
   end
 
   def print_short
-    "#{year_padded}/#{month_padded}|#{week_padded}/#{day_padded}"\
-      " #{hour_padded}:#{minute_padded}:#{second_padded}"
+    "#{year_padded}/#{month_padded}|#{week_padded}/#{day_padded} #{time_string}"
   end
 
   def print_unit
@@ -21,8 +20,7 @@ class Calendar
   end
 
   def print_long
-    "#{hour_padded}:#{minute_padded}:#{second_padded}, "\
-      "#{day_string}, #{week_string}, #{month_string} #{year}"
+    "#{time_string}, #{day_string}, #{week_string}, #{month_string} #{year}"
   end
 
   def day_string
@@ -37,6 +35,10 @@ class Calendar
     %w(January February March April May
        June July August September October
        November December Undecember)[month]
+  end
+
+  def time_string
+    "#{hour_padded}:#{minute_padded}:#{second_padded}"
   end
 
   def year
