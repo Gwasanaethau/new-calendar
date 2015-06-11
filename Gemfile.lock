@@ -43,7 +43,7 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.6.1)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_test (0.1.2)
     netrc (0.10.3)
     parser (2.2.2.5)
