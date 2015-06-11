@@ -193,5 +193,69 @@ describe Calendar do
         end
       end
     end
+
+    it 'displays the day name' do
+      subject = described_class.new 0
+      expect(subject.day_name).to eql 'Monday'
+      subject = described_class.new 1 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Tuesday'
+      subject = described_class.new 2 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Wednesday'
+      subject = described_class.new 3 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Thursday'
+      subject = described_class.new 4 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Friday'
+      subject = described_class.new 5 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Saturday'
+      subject = described_class.new 6 * 60 * 60 * 24
+      expect(subject.day_name).to eql 'Sunday'
+    end
+
+    it 'displays the week name' do
+      subject = described_class.new 0
+      expect(subject.week_name).to eql 'Luath'
+      subject = described_class.new 1 * 60 * 60 * 24 * 7
+      expect(subject.week_name).to eql 'Dara'
+      subject = described_class.new 2 * 60 * 60 * 24 * 7
+      expect(subject.week_name).to eql 'Láir'
+      subject = described_class.new 3 * 60 * 60 * 24 * 7
+      expect(subject.week_name).to eql 'Deireanach'
+    end
+
+    it 'displays the month name' do
+      subject = described_class.new 0
+      expect(subject.month_name).to eql 'January'
+      subject = described_class.new 1 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'February'
+      subject = described_class.new 2 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'March'
+      subject = described_class.new 3 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'April'
+      subject = described_class.new 4 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'May'
+      subject = described_class.new 5 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'June'
+      subject = described_class.new 6 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'July'
+      subject = described_class.new 7 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'August'
+      subject = described_class.new 8 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'September'
+      subject = described_class.new 9 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'October'
+      subject = described_class.new 10 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'November'
+      subject = described_class.new 11 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'December'
+      subject = described_class.new 12 * 60 * 60 * 24 * 7 * 4
+      expect(subject.month_name).to eql 'Undecember'
+    end
+
+    it 'displays the time' do
+      subject = described_class.new 0
+      expect(subject.time_string).to eql '00:00:00'
+      subject = described_class.new 60 * 60 * 24 - 1
+      expect(subject.time_string).to eql '23:59:59'
+    end
   end
 end
