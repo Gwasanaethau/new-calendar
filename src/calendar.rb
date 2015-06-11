@@ -20,18 +20,18 @@ class Calendar
   end
 
   def print_long
-    "#{time_string}, #{day_string}, #{week_string}, #{month_string} #{year}"
+    "#{time_string}, #{day_name}, #{week_name}, #{month_name} #{year}"
   end
 
-  def day_string
+  def day_name
     %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)[day]
   end
 
-  def week_string
+  def week_name
     %w(Luath Dara Láir Deireanach)[week]
   end
 
-  def month_string
+  def month_name
     %w(January February March April May
        June July August September October
        November December Undecember)[month]
